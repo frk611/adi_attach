@@ -12,7 +12,7 @@ import 'bluetooth_tile.dart';
 import 'package:share_plus/share_plus.dart';
 
 class HomeScanPage extends StatefulWidget {
-  const HomeScanPage({Key? key}) : super(key: key);
+  const HomeScanPage({super.key});
 
   @override
   State<HomeScanPage> createState() => _HomeScanPageState();

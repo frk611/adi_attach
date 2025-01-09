@@ -10,11 +10,10 @@ import '../characteristic_card.dart';
 
 class WriteCharacteristicScreen extends StatefulWidget {
   const WriteCharacteristicScreen(
-      {Key? key,
+      {super.key,
       required this.characteristic,
       required this.device,
-      required this.writeType})
-      : super(key: key);
+      required this.writeType});
 
   final DiscoveredCharacteristic characteristic;
   final DiscoveredDeviceRSSIDataPoints device;
@@ -147,7 +146,7 @@ class _WriteCharacteristicScreenState extends State<WriteCharacteristicScreen> {
 }
 
 class WriteTypeDropDown extends StatefulWidget {
-  const WriteTypeDropDown({Key? key}) : super(key: key);
+  const WriteTypeDropDown({super.key});
 
   @override
   State<WriteTypeDropDown> createState() => _WriteTypeDropDownState();

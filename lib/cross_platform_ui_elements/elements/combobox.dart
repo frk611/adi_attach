@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 
 class CPComboBox<T> extends StatelessWidget {
   const CPComboBox({
-    Key? key,
+    super.key,
     required this.items,
     this.value,
     this.hint,
@@ -30,7 +30,7 @@ class CPComboBox<T> extends StatelessWidget {
     this.borderRadius,
     this.placeholder,
     this.comboboxColor,
-  }) : super(key: key);
+  });
 
   final List<CPComboBoxItem<T>> items;
   final T? value;

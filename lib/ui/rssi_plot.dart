@@ -7,7 +7,7 @@ import 'package:provider/provider.dart';
 import 'package:simple_logger/simple_logger.dart';
 
 class RSSIChart extends StatefulWidget {
-  const RSSIChart({Key? key}) : super(key: key);
+  const RSSIChart({super.key});
 
   @override
   State<RSSIChart> createState() => _RSSIChartState();
@@ -78,9 +78,9 @@ class _RSSIChartState extends State<RSSIChart> {
 
 class RSSIGraphWidget extends StatelessWidget {
   const RSSIGraphWidget({
-    Key? key,
+    super.key,
     required this.filteredDevices,
-  }) : super(key: key);
+  });
 
   final List<DiscoveredDeviceRSSIDataPoints> filteredDevices;
 
@@ -126,7 +126,7 @@ class RSSIGraphWidget extends StatelessWidget {
         //context.watch<BleScanner>().devices
         return LineChart(
           //swapAnimationCurve: Curves.fastLinearToSlowEaseIn,
-          swapAnimationDuration: const Duration(milliseconds: 0),
+          //swapAnimationDuration: const Duration(milliseconds: 0),
           LineChartData(
             lineBarsData: lines,
             lineTouchData: LineTouchData(enabled: false),

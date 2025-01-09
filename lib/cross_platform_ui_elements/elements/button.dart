@@ -15,7 +15,7 @@ class CPButton extends StatelessWidget {
   final String? tooltipMessage;
 
   const CPButton({
-    Key? key,
+    super.key,
     required this.child,
     this.onPressed,
     this.onLongPress,
@@ -26,7 +26,7 @@ class CPButton extends StatelessWidget {
     this.autofocus = false,
     this.windowsStyle,
     this.tooltipMessage,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

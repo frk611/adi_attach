@@ -5,7 +5,7 @@ import 'package:flutter/services.dart';
 
 class CPTextBox extends StatelessWidget {
   const CPTextBox({
-    Key? key,
+    super.key,
     this.controller,
     this.focusNode,
     this.padding = windows.kTextBoxPadding,
@@ -72,7 +72,7 @@ class CPTextBox extends StatelessWidget {
     this.mouseCursor,
     this.buildCounter,
     this.enableIMEPersonalizedLearning = true,
-  }) : super(key: key);
+  });
   final TextEditingController? controller;
   final FocusNode? focusNode;
   final EdgeInsetsGeometry padding;
@@ -154,13 +154,13 @@ class CPTextBox extends StatelessWidget {
         placeholder: placeholder,
         placeholderStyle: placeholderStyle,
         prefix: prefix,
-        outsidePrefix: outsidePrefix,
+        //outsidePrefix: outsidePrefix,
         prefixMode: prefixMode,
-        outsidePrefixMode: outsidePrefixMode,
+        //outsidePrefixMode: outsidePrefixMode,
         suffix: suffix,
-        outsideSuffix: outsideSuffix,
+        //outsideSuffix: outsideSuffix,
         suffixMode: suffixMode,
-        outsideSuffixMode: outsideSuffixMode,
+        //outsideSuffixMode: outsideSuffixMode,
         keyboardType: keyboardType,
         textInputAction: textInputAction,
         style: style ??
@@ -172,7 +172,7 @@ class CPTextBox extends StatelessWidget {
         textAlign: textAlign,
         textAlignVertical: textAlignVertical,
         readOnly: readOnly,
-        toolbarOptions: toolbarOptions,
+        //toolbarOptions: toolbarOptions,
         showCursor: showCursor,
         autofocus: autofocus,
         obscuringCharacter: obscuringCharacter,
@@ -183,7 +183,7 @@ class CPTextBox extends StatelessWidget {
         enableSuggestions: enableSuggestions,
         maxLines: maxLines,
         minLines: minLines,
-        minHeight: minHeight,
+        //minHeight: minHeight,
         expands: expands,
         maxLength: maxLength,
         maxLengthEnforcement: maxLengthEnforcement,
@@ -192,22 +192,26 @@ class CPTextBox extends StatelessWidget {
         onSubmitted: onSubmitted,
         inputFormatters: inputFormatters,
         enabled: enabled,
-        cursorWidth: cursorWidth,
-        cursorHeight: cursorHeight,
-        cursorRadius: cursorRadius,
-        cursorColor: cursorColor,
-        keyboardAppearance: keyboardAppearance,
-        scrollPadding: scrollPadding,
-        enableInteractiveSelection: enableInteractiveSelection,
+        cursorWidth: cursorWidth, // Provide a default value if null
+        cursorHeight: cursorHeight ?? 20.0, // Provide a default value if null
+        cursorRadius: cursorRadius ??
+            Radius.circular(2.0), // Provide a default value if null
+        cursorColor:
+            cursorColor ?? Colors.black, // Provide a default color if null
+        keyboardAppearance: keyboardAppearance ??
+            Brightness.light, // Provide a default appearance if null
+        scrollPadding: scrollPadding, // Provide a default padding if null
+        enableInteractiveSelection:
+            enableInteractiveSelection, // Provide a default value if null
         onTap: onTap,
         scrollController: scrollController,
         scrollPhysics: scrollPhysics,
         autofillHints: autofillHints,
         restorationId: restorationId,
         textCapitalization: textCapitalization,
-        header: header,
-        headerStyle: headerStyle,
-        iconButtonThemeData: iconButtonThemeData,
+        //header: header,
+        //headerStyle: headerStyle,
+        //iconButtonThemeData: iconButtonThemeData,
         decoration: decoration,
         foregroundDecoration: foregroundDecoration,
         highlightColor: highlightColor,

@@ -5,7 +5,7 @@ import 'package:fluent_ui/fluent_ui.dart' as windows;
 
 class CPDialog extends StatelessWidget {
   const CPDialog({
-    Key? key,
+    super.key,
     this.title,
     this.titlePadding = const EdgeInsets.fromLTRB(24.0, 24.0, 24.0, 0.0),
     this.titleTextStyle,
@@ -25,7 +25,7 @@ class CPDialog extends StatelessWidget {
     this.insetAnimationCurve = Curves.decelerate,
     this.contentDialogThemeData,
     this.contraints = windows.kDefaultContentDialogConstraints,
-  }) : super(key: key);
+  });
 
   final Widget? title;
   final EdgeInsetsGeometry titlePadding;

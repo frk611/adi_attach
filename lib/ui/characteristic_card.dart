@@ -11,8 +11,7 @@ import 'package:adi_attach/ble/ble_device_manager.dart';
 
 class CharacteristicCard extends StatefulWidget {
   const CharacteristicCard(
-      {Key? key, required this.characteristic, required this.device})
-      : super(key: key);
+      {super.key, required this.characteristic, required this.device});
 
   final DiscoveredCharacteristic characteristic;
   final DiscoveredDeviceRSSIDataPoints device;

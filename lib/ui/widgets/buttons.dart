@@ -7,10 +7,10 @@ import 'package:provider/provider.dart';
 
 class ConnectButton extends StatelessWidget {
   const ConnectButton({
-    Key? key,
+    super.key,
     required this.device,
     this.isCheckSameDevice = false,
-  }) : super(key: key);
+  });
 
   final DiscoveredDeviceRSSIDataPoints device;
   final bool isCheckSameDevice;
@@ -43,9 +43,9 @@ class ConnectButton extends StatelessWidget {
 
 class DisconnectButton extends StatelessWidget {
   const DisconnectButton({
-    Key? key,
+    super.key,
     required this.device,
-  }) : super(key: key);
+  });
 
   final DiscoveredDeviceRSSIDataPoints device;
 

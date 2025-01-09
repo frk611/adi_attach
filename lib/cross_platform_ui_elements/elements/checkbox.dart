@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 
 class CPCheckBox extends StatelessWidget {
   const CPCheckBox({
-    Key? key,
+    super.key,
     this.checked,
     this.onChanged,
     this.desktopStyle,
@@ -26,7 +26,7 @@ class CPCheckBox extends StatelessWidget {
     this.shape,
     this.side,
     this.tooltipMessage,
-  }) : super(key: key);
+  });
   final bool? checked;
   final ValueChanged<bool?>? onChanged;
   final windows.CheckboxThemeData? desktopStyle;
@@ -37,14 +37,14 @@ class CPCheckBox extends StatelessWidget {
 
   final MouseCursor? mouseCursor;
   final Color? activeColor;
-  final MaterialStateProperty<Color?>? fillColor;
+  final WidgetStateProperty<Color?>? fillColor;
   final Color? checkColor;
   final bool tristate;
   final MaterialTapTargetSize? materialTapTargetSize;
   final VisualDensity? visualDensity;
   final Color? focusColor;
   final Color? hoverColor;
-  final MaterialStateProperty<Color?>? overlayColor;
+  final WidgetStateProperty<Color?>? overlayColor;
   final double? splashRadius;
   final OutlinedBorder? shape;
   final BorderSide? side;

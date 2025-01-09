@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 class ScanFilter extends StatefulWidget {
-  const ScanFilter({Key? key}) : super(key: key);
+  const ScanFilter({super.key});
 
   @override
   State<ScanFilter> createState() => _ScanFilterState();
@@ -123,7 +123,8 @@ class _ScanFilterState extends State<ScanFilter> {
               ),
               IconButton(
                 iconSize: 24,
-                onPressed: Provider.of<BleScanner>(context, listen: false)
+                onPressed: Provider.of<BleScanner>(context,
+                        listen: false) //need to check
                     .toggleSortMode,
                 icon: Icon(Provider.of<BleScanner>(context).sortMode ==
                         SortMode.descending

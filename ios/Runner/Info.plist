@@ -55,5 +55,7 @@
 	<false/>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>Please pick a hex file to program OTAS device.</string>
+	<key>UIApplicationSupportsIndirectInputEvents</key>
+	<true/>
 </dict>
 </plist>

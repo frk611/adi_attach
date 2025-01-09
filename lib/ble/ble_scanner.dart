@@ -67,15 +67,14 @@ class BleScanner extends ChangeNotifier {
             'Need Bluetooth permission to operate. '
                 'Bluetooth permission is not granted. '
                 'Please go to privacy settings and grant Bluetooth permission.',
-            'Open Bluetooth Permissions',
-            () => AppSettings.openBluetoothSettings());
+            'Open App Permissions',
+            () => AppSettings.openAppSettings());
         return false;
       }
       return true;
     } else if (Platform.isAndroid) {
       AndroidDeviceInfo androidInfo = await DeviceInfoPlugin().androidInfo;
-      if (int.parse(androidInfo.version.release?.split('.').first ?? '0') <
-          12) {
+      if (int.parse(androidInfo.version.release.split('.').first) < 12) {
         if (!await Permission.locationWhenInUse.request().isGranted &&
             mounted) {
           showNoPermissionDialog(
@@ -389,8 +388,8 @@ class DiscoveredDeviceRSSIDataPoints {
   bool get isEmpty => _dataPoints.isEmpty;
   Uint8List get manufacturerData => _dataPoints.last.manufacturerData;
   Color get color => _color;
-  int? get txPowerLevel => _dataPoints.last.getTxPowerLevel;
-  bool get connecible => _dataPoints.last.isConnectable;
+  //int? get txPowerLevel => _dataPoints.last.getTxPowerLevel;
+  bool get connecible => _dataPoints.last.connectable == true;
 
   DiscoveredDeviceRSSIDataPoints({DiscoveredDevice? device}) {
     _color = Color.fromARGB(200, Random().nextInt(200), Random().nextInt(200),
@@ -449,8 +448,8 @@ class DiscoveredDeviceWithTimestamp extends DiscoveredDevice {
           rssi: device.rssi,
           serviceData: device.serviceData,
           serviceUuids: device.serviceUuids,
-          txPowerLevel: device.txPowerLevel,
-          isConnectable: device.isConnectable,
+          //txPowerLevel: device.txPowerLevel,
+          connectable: device.connectable,
         );
 }
 

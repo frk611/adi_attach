@@ -1,4 +1,4 @@
-library cross_platform_ui_elements;
+library;
 
 export 'elements/button.dart';
 export 'elements/checkbox.dart';

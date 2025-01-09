@@ -11,7 +11,7 @@ import 'package:signal_strength_indicator/signal_strength_indicator.dart';
 import 'package:simple_logger/simple_logger.dart';
 
 class BleDevicesTile extends StatelessWidget {
-  const BleDevicesTile({Key? key, required this.device}) : super(key: key);
+  const BleDevicesTile({super.key, required this.device});
 
   final DiscoveredDeviceRSSIDataPoints device;
 
@@ -61,8 +61,8 @@ class BleDevicesTile extends StatelessWidget {
               ],
             ),
             Text('Connectable: ${device.connecible}'),
-            device.txPowerLevel != null
-                ? Text('Tx Power Level: ${device.txPowerLevel} dBm')
+            device.advertisingInterval != null
+                ? Text('Tx Power Level: ${device.advertisingInterval} dBm')
                 : const SizedBox(),
           ],
         ),
@@ -109,9 +109,9 @@ class BleDevicesTile extends StatelessWidget {
 
 class SignalIndicatorIcon extends StatelessWidget {
   const SignalIndicatorIcon({
-    Key? key,
+    super.key,
     required this.rssi,
-  }) : super(key: key);
+  });
 
   final int rssi;
   final int barCount = 4;

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 class LicenseView extends StatefulWidget {
-  const LicenseView({Key? key}) : super(key: key);
+  const LicenseView({super.key});
 
   @override
   State<LicenseView> createState() => _LicenseViewState();
@@ -12,9 +12,9 @@ class _LicenseViewState extends State<LicenseView> {
   String? data;
 
   void _loadData() async {
-    final _loadedData = await rootBundle.loadString('assets/license.txt');
+    final loadedData = await rootBundle.loadString('assets/license.txt');
     setState(() {
-      data = _loadedData;
+      data = loadedData;
     });
   }
 

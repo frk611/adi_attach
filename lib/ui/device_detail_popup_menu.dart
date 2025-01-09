@@ -11,9 +11,9 @@ import '../ble/ble_device_manager.dart';
 
 class DeviceDetailPopupMenuButton extends StatelessWidget {
   const DeviceDetailPopupMenuButton({
-    Key? key,
+    super.key,
     required this.device,
-  }) : super(key: key);
+  });
 
   final DiscoveredDeviceRSSIDataPoints device;
 

@@ -8,9 +8,9 @@ import '../ble/ble_connect_device.dart';
 
 class MtuSizeSetAlertDialog extends StatefulWidget {
   const MtuSizeSetAlertDialog({
-    Key? key,
+    super.key,
     required this.device,
-  }) : super(key: key);
+  });
 
   final DiscoveredDeviceRSSIDataPoints device;
 

@@ -280,25 +280,25 @@ class _OTASDialogState extends State<OTASDialog> {
     setState(() => _busy = true);
     try {
       _expectedEvent = [10, 0, 0];
-      int WDX_FLIST_HANLD = 0;
-      int WDX_FLIST_FORMAT_VER = 1;
-      int WDX_FLIST_HDR_SIZE = 7;
-      int WDX_FLIST_RECORD_SIZE = 40;
-      int DATC_WDXC_MAX_FILES = 4;
-      List<int> WDX_FTC_OP_GET_REQ = [0x01];
-      List<int> WDX_FILE_HANDLE = [0x00, 0x00];
-      List<int> WDX_FILE_OFFSET = [0x00, 0x00, 0x00, 0x00];
+      int wdxFlistHanld = 0;
+      int wdxFlistFormatVer = 1;
+      int wdxFlistHdrSize = 7;
+      int wdxFlistRecordSize = 40;
+      int datcWdxcMaxFiles = 4;
+      List<int> wdxFtcOpGetReq = [0x01];
+      List<int> wdxFileHandle = [0x00, 0x00];
+      List<int> wdxFileOffset = [0x00, 0x00, 0x00, 0x00];
       List<int> maxFileRecordLength = Uint8List(4)
         ..buffer.asByteData().setInt32(
             0,
-            WDX_FLIST_RECORD_SIZE * DATC_WDXC_MAX_FILES + WDX_FLIST_HDR_SIZE,
+            wdxFlistRecordSize * datcWdxcMaxFiles + wdxFlistHdrSize,
             Endian.little);
-      List<int> WDX_FILE_TYPE = [0x00];
-      List<int> rawBytes = WDX_FTC_OP_GET_REQ +
-          WDX_FILE_HANDLE +
-          WDX_FILE_OFFSET +
+      List<int> wdxFileType = [0x00];
+      List<int> rawBytes = wdxFtcOpGetReq +
+          wdxFileHandle +
+          wdxFileOffset +
           maxFileRecordLength +
-          WDX_FILE_TYPE;
+          wdxFileType;
       SimpleLogger().info('File Discovery');
       SimpleLogger().fine('Bytes sent $rawBytes');
       await Provider.of<BleDeviceManager>(context, listen: false)
@@ -370,17 +370,17 @@ class _OTASDialogState extends State<OTASDialog> {
     setState(() => _busy = true);
     try {
       _expectedEvent = [4, 1, 0, 0, 0, 48, 0];
-      List<int> WDX_FTC_OP_PUT_REQ = [0x03];
-      List<int> WDX_FILE_OFFSET = [0x00, 0x00, 0x00, 0x00];
-      List<int> WDX_FILE_TYPE = [0x00];
+      List<int> wdxFtcOpPutReq = [0x03];
+      List<int> wdxFileOffset = [0x00, 0x00, 0x00, 0x00];
+      List<int> wdxFileType = [0x00];
       List<int> fileLen = Uint8List(4)
         ..buffer.asByteData().setInt32(0, await _file!.length(), Endian.little);
-      List<int> rawBytes = WDX_FTC_OP_PUT_REQ +
+      List<int> rawBytes = wdxFtcOpPutReq +
           [0x01, 0x00] +
-          WDX_FILE_OFFSET +
+          wdxFileOffset +
           fileLen +
           fileLen +
-          WDX_FILE_TYPE;
+          wdxFileType;
       if (mounted) {
         SimpleLogger().info('Sending Put Request');
         SimpleLogger().fine('Bytes sent $rawBytes');
@@ -420,10 +420,11 @@ class _OTASDialogState extends State<OTASDialog> {
       for (int i = 0; i < loopCount; i++) {
         if (mounted) {
           if (_connectionState == DeviceConnectionState.connected) {
-            int startAddr = i*packetSize;
+            int startAddr = i * packetSize;
             int endAddr = min(startAddr + packetSize, bytes.length);
 
-            await writeChar(startAddr, bytes.sublist(startAddr, endAddr)).timeout(
+            await writeChar(startAddr, bytes.sublist(startAddr, endAddr))
+                .timeout(
               const Duration(seconds: 10),
               onTimeout: () {
                 SimpleLogger().fine('Timeout while write operation');
@@ -452,13 +453,13 @@ class _OTASDialogState extends State<OTASDialog> {
   Future<void> writeChar(int addr, Uint8List bytes) async {
     List<int> packet = [];
     // add address, little endian
-    packet.add((addr>>0) & 0xff);
-    packet.add((addr>>8) & 0xff);
-    packet.add((addr>>16) & 0xff);
-    packet.add((addr>>24) & 0xff);
+    packet.add((addr >> 0) & 0xff);
+    packet.add((addr >> 8) & 0xff);
+    packet.add((addr >> 16) & 0xff);
+    packet.add((addr >> 24) & 0xff);
     // add data
     packet.addAll(bytes);
-    
+
     await Provider.of<BleDeviceManager>(context, listen: false)
         .writeCharacteristicWithoutResponse(
       _discoverServices()

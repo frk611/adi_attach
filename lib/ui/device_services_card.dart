@@ -8,8 +8,7 @@ import 'characteristic_card.dart';
 
 class DeviceServicesCard extends StatefulWidget {
   const DeviceServicesCard(
-      {Key? key, required this.service, required this.device})
-      : super(key: key);
+      {super.key, required this.service, required this.device});
 
   final DiscoveredService service;
   final DiscoveredDeviceRSSIDataPoints device;

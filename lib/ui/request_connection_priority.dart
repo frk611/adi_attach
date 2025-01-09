@@ -7,9 +7,9 @@ import 'package:provider/provider.dart';
 
 class RequestConnectionPriorityButton extends StatelessWidget {
   const RequestConnectionPriorityButton({
-    Key? key,
+    super.key,
     required this.device,
-  }) : super(key: key);
+  });
 
   final DiscoveredDeviceRSSIDataPoints device;
 

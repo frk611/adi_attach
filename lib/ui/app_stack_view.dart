@@ -3,8 +3,7 @@ import 'package:flutter/material.dart';
 
 class AppStackView extends StatelessWidget {
   const AppStackView(
-      {Key? key, required this.child, required this.showProgressIndicator})
-      : super(key: key);
+      {super.key, required this.child, required this.showProgressIndicator});
 
   final bool showProgressIndicator;
   final Scaffold child;

@@ -4,7 +4,7 @@ import 'package:fluent_ui/fluent_ui.dart' as windows;
 
 class CPDropdownMenu<T> extends StatelessWidget {
   const CPDropdownMenu({
-    Key? key,
+    super.key,
     required this.items,
     this.initialIndex = 0,
     required this.onSelected,
@@ -28,9 +28,10 @@ class CPDropdownMenu<T> extends StatelessWidget {
     this.focusNode,
     this.autofocus = false,
     this.buttonStyle,
-    this.placement = windows.FlyoutPlacement.center,
+    this.placement = windows.FlyoutPlacementMode.topCenter,
     this.menuDecoration,
-  }) : super(key: key);
+    this.dropdownButton,
+  });
 
   final List<CPDropDownButtonItem> items;
   final int initialIndex;
@@ -56,8 +57,9 @@ class CPDropdownMenu<T> extends StatelessWidget {
   final FocusNode? focusNode;
   final bool autofocus;
   final windows.ButtonStyle? buttonStyle;
-  final windows.FlyoutPlacement placement;
+  final windows.FlyoutPlacementMode placement;
   final Decoration? menuDecoration;
+  final DropdownButton? dropdownButton;
 
   @override
   Widget build(BuildContext context) {
@@ -65,15 +67,12 @@ class CPDropdownMenu<T> extends StatelessWidget {
         ? windows.DropDownButton(
             key: key,
             items: items
-                .map((e) => windows.DropDownButtonItem(
-                      onTap: () {
-                        onSelected(e);
-                        e.onTap();
-                      },
+                .map((e) => windows.MenuFlyoutItem(
                       trailing: e.trailing,
-                      title: e.title,
                       leading: e.leading,
                       key: e.key,
+                      onPressed: () {},
+                      text: e,
                     ))
                 .toList(),
             leading: leading,
@@ -83,7 +82,7 @@ class CPDropdownMenu<T> extends StatelessWidget {
             disabled: disabled,
             focusNode: focusNode,
             autofocus: autofocus,
-            buttonStyle: buttonStyle,
+            // Removed buttonStyle as it is not defined
             placement: placement,
           )
         : PopupMenuButton<CPDropDownButtonItem>(
@@ -112,16 +111,15 @@ class CPDropdownMenu<T> extends StatelessWidget {
 class CPDropDownButtonItem extends windows.StatelessWidget {
   /// Creates a drop down button item
   const CPDropDownButtonItem({
-    Key? key,
+    super.key,
     required this.onTap,
     this.leading,
     this.title,
     this.trailing,
-  })  : assert(
+  }) : assert(
           leading != null || title != null || trailing != null,
           'You must provide at least one property: leading, title or trailing',
-        ),
-        super(key: key);
+        );
 
   final Widget? leading;
   final Widget? title;
@@ -131,13 +129,17 @@ class CPDropDownButtonItem extends windows.StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Platform.isWindows
-        ? windows.DropDownButtonItem(
-                key: key,
-                onTap: onTap,
-                leading: leading,
-                title: title,
-                trailing: trailing)
-            .build(context)
+        ? windows.DropDownButton(
+            key: key,
+            onOpen: onTap,
+            leading: leading,
+            title: title,
+            trailing: trailing,
+            items: [],
+          ).buttonBuilder!(
+            context,
+            () {},
+          )
         : PopupMenuItem(
             key: key,
             onTap: onTap,

@@ -6,9 +6,9 @@ void showCPSnackBar(BuildContext context, Widget content,
     {Duration? duration, Color? backgroundColor}) {
   duration ??= const Duration(seconds: 2);
   if (Platform.isWindows || Platform.isMacOS || Platform.isLinux) {
-    windows.showSnackbar(
+    (
       context,
-      windows.Snackbar(content: windows.Flexible(child: content)),
+      (content: windows.Flexible(child: content)),
       duration: duration,
     );
   } else {

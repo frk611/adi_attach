@@ -18,7 +18,7 @@ publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 version: 1.0.1+1
 
 environment:
-  sdk: ">=2.17.6 <3.0.0"
+  sdk: ">=3.0.0 <4.0.0"
 
 # Dependencies specify other packages that your package needs in order to work.
 # To automatically upgrade your package dependencies to the latest versions
@@ -30,96 +30,75 @@ dependencies:
   flutter:
     sdk: flutter
 
-  # Share content
-  share_plus: ^6.2.0
+  # Share content 10.1.2
+  share_plus: ^10.1.2
 
   # App Onboarding
-  showcaseview: ^1.1.8
+  showcaseview: ^3.0.0
 
   # Windows themed widgets
-  fluent_ui: ^4.0.0
+  fluent_ui: ^4.9.2
   
   # Parse uuids
-  json_schema2: ^2.0.2+11
+  json_schema: ^5.1.5
 
   # charts
-  fl_chart: ^0.55.2
+  fl_chart: ^0.69.2
 
-  # Logging tool
+  # Logging tool (need to check)
   simple_logger: ^1.9.0
 
   # BLE - Bluetooth Low Energy
   flutter_reactive_ble: ^5.0.2
+  reactive_ble_mobile: ^5.0.2
+  reactive_ble_platform_interface: ^5.0.2
 
   # Permission
-  permission_handler: ^10.0.0
+  permission_handler: ^11.3.1
 
-  #states
+  #states (need to check)
   provider: ^6.0.3
 
-  #signal icon
+  #signal icon (need to check)
   signal_strength_indicator: ^0.4.1
 
   # splash screen
-  flutter_native_splash: ^2.2.8
+  flutter_native_splash: ^2.4.3
 
   # Open Settings
-  app_settings: ^4.1.8
+  app_settings: ^5.1.1
 
   # Get version
-  package_info_plus: ^1.4.3+1
+  package_info_plus: ^8.1.1
 
   # Device info
-  device_info_plus: ^4.1.2
+  device_info_plus: ^11.1.1
 
   # The following adds the Cupertino Icons font to your application.
-  # Use with the CupertinoIcons class for iOS style icons.
+  # Use with the CupertinoIcons class for iOS style icons. (need to check)
   cupertino_icons: ^1.0.2
 
   # pick program files
-  file_picker: ^5.2.0+1
+  file_picker: ^8.1.4
 
   # For CRC32
-  archive: ^3.3.2
-  ffigen: ^7.2.0
-  async: ^2.9.0
-
-dependency_overrides:
-  fl_chart:
-    git:
-      url: https://github.com/imaNNeo/fl_chart
-      ref: master
-
-  flutter_reactive_ble:
-    git:
-      url: https://github.com/analogdevicesinc/flutter_reactive_ble.git
-      ref: dev-adi
-      path: packages/flutter_reactive_ble
-
-  reactive_ble_mobile:
-    git:
-      url: https://github.com/analogdevicesinc/flutter_reactive_ble.git
-      ref: dev-adi
-      path: packages/reactive_ble_mobile
-
-  reactive_ble_platform_interface:
-    git:
-      url: https://github.com/analogdevicesinc/flutter_reactive_ble.git
-      ref: dev-adi
-      path: packages/reactive_ble_platform_interface
+  archive: ^3.5.0
+  ffigen: ^16.0.0
+  async: ^2.11.0
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
 
-  flutter_launcher_icons: ^0.10.0
+  flutter_launcher_icons: ^0.14.1
 
   # The "flutter_lints" package below contains a set of recommended lints to
   # encourage good coding practices. The lint set provided by the package is
   # activated in the `analysis_options.yaml` file located at the root of your
   # package. See that file for information about deactivating specific lint
   # rules and activating additional ones.
-  flutter_lints: ^2.0.0
+  flutter_lints: ^5.0.0
+  melos: ^6.2.0
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec

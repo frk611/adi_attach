@@ -19,7 +19,7 @@ class CPText extends StatelessWidget {
 
   const CPText(
     this.data, {
-    Key? key,
+    super.key,
     this.style,
     this.strutStyle,
     this.textAlign,
@@ -32,7 +32,7 @@ class CPText extends StatelessWidget {
     this.semanticsLabel,
     this.textWidthBasis,
     this.textSpan,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

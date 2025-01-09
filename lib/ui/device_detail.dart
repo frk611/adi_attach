@@ -14,7 +14,7 @@ import 'device_detail_popup_menu.dart';
 import 'device_services_card.dart';
 
 class DeviceDetailView extends StatefulWidget {
-  const DeviceDetailView({Key? key, required this.device}) : super(key: key);
+  const DeviceDetailView({super.key, required this.device});
 
   final DiscoveredDeviceRSSIDataPoints device;
 
@@ -184,8 +184,9 @@ class _DeviceDetailViewState extends State<DeviceDetailView> {
                   ],
                 ),
                 Text('Connectable: ${widget.device.connecible}'),
-                widget.device.txPowerLevel != null
-                    ? Text('Tx Power Level: ${widget.device.txPowerLevel} dBm')
+                widget.device.advertisingInterval != null
+                    ? Text(
+                        'Tx Power Level: ${widget.device.advertisingInterval} dBm')
                     : const SizedBox(),
                 Provider.of<BleScanner>(context).isScanning
                     ? SizedBox(

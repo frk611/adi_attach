@@ -1,7 +1,7 @@
 import 'dart:convert';
 import 'package:flutter/services.dart';
 import 'package:flutter_reactive_ble/flutter_reactive_ble.dart';
-import 'package:json_schema2/json_schema2.dart';
+import 'package:json_schema/json_schema.dart';
 import 'package:simple_logger/simple_logger.dart';
 
 class GATT {
@@ -10,7 +10,7 @@ class GATT {
   static List<Map<String, dynamic>>? _companyIds;
 
   static init() async {
-    JsonSchema attributeSchema = JsonSchema.createSchema(await rootBundle
+    JsonSchema attributeSchema = JsonSchema.create(await rootBundle
         .loadString('bluetooth-numbers-database/v1/attribute_schema.json'));
     SimpleLogger().finest('attribute_schema\n$attributeSchema');
     //SimpleLogger().config('${attribute_schema.description}');
@@ -19,7 +19,8 @@ class GATT {
         .loadString('bluetooth-numbers-database/v1/characteristic_uuids.json'));
     SimpleLogger().config('Characteristic JSON is valid: '
         '${attributeSchema.validate(characteristicUuids, parseJson: true)}');
-    if (attributeSchema.validate(characteristicUuids, parseJson: true)) {
+    if (attributeSchema.validate(characteristicUuids, parseJson: true) ==
+        true) {
       SimpleLogger().finest(characteristicUuids[0].runtimeType);
       SimpleLogger().finest(characteristicUuids[0]);
       try {
@@ -38,7 +39,7 @@ class GATT {
         .loadString('bluetooth-numbers-database/v1/service_uuids.json'));
     SimpleLogger().config('Service JSON is valid: '
         '${attributeSchema.validate(serviceUuids, parseJson: true)}');
-    if (attributeSchema.validate(serviceUuids, parseJson: true)) {
+    if (attributeSchema.validate(serviceUuids, parseJson: true) == true) {
       SimpleLogger().finest(serviceUuids[0].runtimeType);
       SimpleLogger().finest(serviceUuids[0]);
       try {
@@ -52,7 +53,7 @@ class GATT {
       }
     }
 
-    JsonSchema companySchema = JsonSchema.createSchema(await rootBundle
+    JsonSchema companySchema = JsonSchema.create(await rootBundle
         .loadString('bluetooth-numbers-database/v1/company_schema.json'));
     SimpleLogger().finest('company_schema\n$attributeSchema');
     //SimpleLogger().config('${attribute_schema.description}');
@@ -61,7 +62,7 @@ class GATT {
         .loadString('bluetooth-numbers-database/v1/company_ids.json'));
     SimpleLogger().config('Company IDs JSON is valid: '
         '${companySchema.validate(companyIds, parseJson: true)}');
-    if (companySchema.validate(companyIds, parseJson: true)) {
+    if (companySchema.validate(companyIds, parseJson: true) == true) {
       SimpleLogger().finest(companyIds[0].runtimeType);
       SimpleLogger().finest(companyIds[0]);
       try {
@@ -80,7 +81,8 @@ class GATT {
         await rootBundle.loadString('assets/custom_characteristics.json'));
     SimpleLogger().config('Custom Characteristic JSON is valid: '
         '${attributeSchema.validate(characteristicUuids, parseJson: true)}');
-    if (attributeSchema.validate(characteristicUuids, parseJson: true)) {
+    if (attributeSchema.validate(characteristicUuids, parseJson: true) ==
+        true) {
       SimpleLogger().finest(characteristicUuids[0].runtimeType);
       SimpleLogger().finest(characteristicUuids[0]);
       try {
@@ -99,7 +101,7 @@ class GATT {
         json.decode(await rootBundle.loadString('assets/custom_services.json'));
     SimpleLogger().config('Custom Service JSON is valid: '
         '${attributeSchema.validate(serviceUuids, parseJson: true)}');
-    if (attributeSchema.validate(serviceUuids, parseJson: true)) {
+    if (attributeSchema.validate(serviceUuids, parseJson: true) == true) {
       SimpleLogger().finest(serviceUuids[0].runtimeType);
       SimpleLogger().finest(serviceUuids[0]);
       try {
